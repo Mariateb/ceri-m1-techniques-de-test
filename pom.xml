@@ -6,7 +6,11 @@
     <version>1.0</version>
     <packaging>pom</packaging>
     <name>Maven Quick Start Archetype</name>
-        <dependencies>
+    <properties>
+        <maven.compiler.source>19</maven.compiler.source>
+        <maven.compiler.target>19</maven.compiler.target>
+    </properties>
+    <dependencies>
             <dependency>
                 <groupId>junit</groupId>
                 <artifactId>junit</artifactId>
