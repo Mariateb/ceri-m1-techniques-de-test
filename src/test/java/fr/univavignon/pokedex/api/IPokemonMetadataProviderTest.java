@@ -3,15 +3,24 @@ package fr.univavignon.pokedex.api;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.when;
 
+import org.junit.Before;
 import org.junit.Test;
+import org.mockito.Mock;
 import org.mockito.Mockito;
+import org.mockito.MockitoAnnotations;
 
 public class IPokemonMetadataProviderTest {
+
+    @Mock
+    IPokemonMetadataProvider provider;
+
+    @Before
+    public void before() {
+        MockitoAnnotations.initMocks(this);
+    }
     @Test
     public void testProvide() throws PokedexException {
-        IPokemonMetadataProvider provider;
 
-        provider = Mockito.mock(IPokemonMetadataProvider.class);
         int aqualiIndex = 133;
 
         PokemonMetadata expected = new PokemonMetadata(

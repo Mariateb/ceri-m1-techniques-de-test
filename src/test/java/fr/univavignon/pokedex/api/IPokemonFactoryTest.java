@@ -1,17 +1,26 @@
 package fr.univavignon.pokedex.api;
 
+import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mockito;
+import org.mockito.MockitoAnnotations;
+import org.mockito.Mock;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.when;
 
 public class IPokemonFactoryTest {
+
+    @Mock
+    IPokemonFactory factory;
+
+    @Before
+    public void before() {
+        MockitoAnnotations.initMocks(this);
+    }
+
     @Test
     public void testPokemonCreation() throws PokedexException {
-        IPokemonFactory factory;
-
-        factory = Mockito.mock(IPokemonFactory.class);
 
         int aqualiIndex = 133;
 

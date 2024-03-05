@@ -1,8 +1,10 @@
 package fr.univavignon.pokedex.api;
 
+import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mockito;
 import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
 
 import static fr.univavignon.pokedex.api.Team.INSTINCT;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -15,13 +17,15 @@ public class IPokemonTrainerFactoryTest {
     private IPokedex pokedex;
     @Mock
     private IPokedexFactory pokedexFactory;
+    @Mock
+    private IPokemonTrainerFactory factory;
 
+    @Before
+    public void before() {
+        MockitoAnnotations.initMocks(this);
+    }
     @Test
     public void testTrainerCreation() {
-        IPokemonTrainerFactory factory;
-
-        pokedex = Mockito.mock(IPokedex.class);
-        factory = Mockito.mock(IPokemonTrainerFactory.class);
 
         PokemonTrainer expected = new PokemonTrainer(
                 "John",

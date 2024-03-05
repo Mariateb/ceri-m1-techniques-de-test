@@ -1,8 +1,10 @@
 package fr.univavignon.pokedex.api;
 
+import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
 import org.mockito.Mockito;
+import org.mockito.MockitoAnnotations;
 
 import java.util.Comparator;
 import java.util.List;
@@ -22,14 +24,18 @@ public class IPokedexFactoryTest {
     @Mock
     private IPokemonFactory pokemonFactory;
 
+    @Mock
+    private IPokedex pokedex;
+
+    @Before
+    public void before() {
+        MockitoAnnotations.initMocks(this);
+    }
     @Test
     public void testPokedexCreation() {
-        metadataProvider = Mockito.mock(IPokemonMetadataProvider.class);
-        pokemonFactory = Mockito.mock(IPokemonFactory.class);
 
-        factory = Mockito.mock(IPokedexFactory.class);
-
-        IPokedex pokedex = factory.createPokedex(metadataProvider, pokemonFactory);
-        assertNotNull(pokedex);
+        when(factory.createPokedex(metadataProvider, pokemonFactory)).thenReturn(pokedex);
+        IPokedex actual = factory.createPokedex(metadataProvider, pokemonFactory);
+        assertEquals(pokedex, actual);
     }
 }
