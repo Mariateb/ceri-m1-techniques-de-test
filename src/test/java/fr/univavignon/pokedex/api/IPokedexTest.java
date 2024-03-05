@@ -26,6 +26,7 @@ public class IPokedexTest {
 
         int expected;
         int actualSize = pokedex.size();
+
         assertEquals(0, actualSize);
 
         Pokemon aquali = new Pokemon(
