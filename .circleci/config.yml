@@ -20,12 +20,12 @@ jobs:
           steps:
             - run: mvn dependency:go-offline
             - run: mvn package
-  codecov/upload:
+  upload:
     docker:
       - image: circleci/openjdk:8-jdk
     steps:
       - checkout
-      - codecov/upload:
+      - upload:
           file: "./target/site/jacoco/jacoco.xml"
           token: ${CODECOV_TOKEN}
 workflows:
@@ -40,7 +40,7 @@ workflows:
             branches:
               only:
                 - master
-      - codecov/upload:
+      - upload:
           requires:
             - build
           filters:
