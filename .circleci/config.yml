@@ -7,13 +7,13 @@ orbs:
 jobs:
   checkout:
     docker:
-      - image: circleci/openjdk:17-jdk
+      - image: circleci/openjdk:21-jdk
     steps:
       - checkout
 
   build:
     docker:
-      - image: circleci/openjdk:17-jdk
+      - image: circleci/openjdk:21-jdk
     steps:
       - checkout
       - maven/with_cache:
