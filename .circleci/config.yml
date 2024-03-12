@@ -20,12 +20,6 @@ jobs:
           steps:
             - run: mvn dependency:go-offline
             - run: mvn test
-
-  upload:
-    docker:
-      - image: circleci/openjdk:8-jdk
-    steps:
-      - checkout
       - codecov/upload
 
 workflows:
@@ -36,13 +30,6 @@ workflows:
       - build:
           requires:
             - checkout
-          filters:
-            branches:
-              only:
-                - master
-      - upload:
-          requires:
-            - build
           filters:
             branches:
               only:
