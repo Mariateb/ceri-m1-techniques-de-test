@@ -16,8 +16,14 @@ jobs:
     steps:
       - checkout
       - run: mvn -version
-      - run: mvn dependency:go-offline
       - run: mvn test
+  upload:
+    docker:
+      - image: cimg/openjdk:21.0.2
+    steps:
+      - checkout
+      - codecov/upload:
+          token: CODECOV_TOKEN
 
 workflows:
   version: 2
@@ -31,7 +37,11 @@ workflows:
             branches:
               only:
                 - master
-  upload-to-codecov:
-    jobs:
-      - checkout
-      - codecov/upload
+      - upload:
+          requires:
+            - checkout
+            - build
+          filters:
+            branches:
+              only:
+                - master
