@@ -14,7 +14,6 @@
         <sourceDirectory>main/java</sourceDirectory>
         <testSourceDirectory>test/java</testSourceDirectory>
         <plugins>
-            <!-- Ajout du plugin JaCoCo -->
             <plugin>
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
@@ -31,9 +30,6 @@
                         <goals>
                             <goal>report</goal>
                         </goals>
-                        <configuration>
-                            <outputDirectory>./target/site/jacoco/jacoco.xml</outputDirectory>
-                        </configuration>
                     </execution>
                 </executions>
             </plugin>

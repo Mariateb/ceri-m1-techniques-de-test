@@ -26,9 +26,7 @@ jobs:
       - image: circleci/openjdk:8-jdk
     steps:
       - checkout
-      - codecov/upload:
-          file: "./target/site/jacoco/jacoco.xml"
-          token: CODECOV_TOKEN
+      - codecov/upload
 
 workflows:
   version: 2
