@@ -15,11 +15,9 @@ jobs:
       - image: circleci/openjdk:21-jdk
     steps:
       - checkout
-      - maven/with_cache:
-          steps:
-            - run: mvn -version
-            - run: mvn dependency:go-offline
-            - run: mvn test
+      - run: mvn -version
+      - run: mvn dependency:go-offline
+      - run: mvn test
       - codecov/upload
 
 workflows:
