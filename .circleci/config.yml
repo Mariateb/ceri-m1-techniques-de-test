@@ -18,6 +18,7 @@ jobs:
       - checkout
       - maven/with_cache:
           steps:
+            - run: mvn -version
             - run: mvn dependency:go-offline
             - run: mvn test
       - codecov/upload
