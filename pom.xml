@@ -11,8 +11,8 @@
         <maven.compiler.target>19</maven.compiler.target>
     </properties>
     <build>
-        <sourceDirectory>main/java</sourceDirectory>
-        <testSourceDirectory>test/java</testSourceDirectory>
+        <sourceDirectory>src/main/java</sourceDirectory>
+        <testSourceDirectory>src/test/java</testSourceDirectory>
         <plugins>
             <plugin>
                 <groupId>org.jacoco</groupId>
