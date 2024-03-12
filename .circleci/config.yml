@@ -28,7 +28,7 @@ jobs:
       - checkout
       - codecov/upload:
           file: "./target/site/jacoco/jacoco.xml"
-          token: ${CODECOV_TOKEN}
+          token: CODECOV_TOKEN
 
 workflows:
   version: 2
