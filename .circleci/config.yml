@@ -17,30 +17,17 @@ jobs:
       - checkout
       - run: mvn -version
       - run: mvn test
-  upload:
-    docker:
-      - image: cimg/openjdk:21.0.2
-    steps:
-      - checkout
       - codecov/upload:
           token: CODECOV_TOKEN
 
 workflows:
   version: 2
-  build:
+  build_and_test:
     jobs:
       - checkout
       - build:
           requires:
             - checkout
-          filters:
-            branches:
-              only:
-                - master
-      - upload:
-          requires:
-            - checkout
-            - build
           filters:
             branches:
               only:
