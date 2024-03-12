@@ -20,7 +20,7 @@ jobs:
           steps:
             - run: mvn dependency:go-offline
             - run: mvn package
-  upload:
+  codecov/upload:
     docker:
       - image: circleci/openjdk:8-jdk
     steps:
