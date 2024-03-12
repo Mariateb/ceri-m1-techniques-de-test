@@ -4,6 +4,11 @@ orbs:
   maven: circleci/maven@1.4.1
   codecov: codecov/codecov@4.0.1
 jobs:
+  checkout:
+    docker:
+      - image: circleci/openjdk:8-jdk
+    steps:
+      - checkout
   build:
     docker:
       - image: circleci/openjdk:8-jdk
