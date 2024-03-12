@@ -24,6 +24,7 @@ public class IPokemonFactoryTest {
 
         int aqualiIndex = 133;
 
+
         Pokemon expected = new Pokemon(
                 133,
                 "Aquali",
