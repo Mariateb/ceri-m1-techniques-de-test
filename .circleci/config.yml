@@ -18,8 +18,9 @@ jobs:
       - run: mvn -version
       - run: mvn dependency:go-offline
       - run: mvn test
-      - codecov/upload
-
+      - codecov/upload:
+          with:
+            token: CODECOV_TOKEN
 
 workflows:
   version: 2
