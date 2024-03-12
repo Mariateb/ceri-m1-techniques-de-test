@@ -6,13 +6,13 @@ orbs:
 jobs:
   checkout:
     docker:
-      - image: cimg/openjdk:21
+      - image: cimg/openjdk:21-jdk
     steps:
       - checkout
 
   build:
     docker:
-      - image: cimg/openjdk:21
+      - image: cimg/openjdk:21-jdk
     steps:
       - checkout
       - run: mvn -version
