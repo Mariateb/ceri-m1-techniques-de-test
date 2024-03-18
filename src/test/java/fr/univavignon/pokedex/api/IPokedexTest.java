@@ -10,6 +10,7 @@ import java.util.Comparator;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.when;
 
 public class IPokedexTest {
@@ -73,6 +74,10 @@ public class IPokedexTest {
         assertEquals(expectedList, pokedex.getPokemons());
 
         PokemonComparators comp = PokemonComparators.NAME;
+
+        int compResult = comp.compare(bulbizarre, aquali);
+
+        assertTrue(compResult > 0);
 
         expectedList = List.of(new Pokemon[]{aquali, bulbizarre});
         when(pokedex.getPokemons(comp)).thenReturn(expectedList);
