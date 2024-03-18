@@ -40,4 +40,7 @@ workflows:
             branches:
               only:
                 - master
+  upload:
+    jobs:
+      - checkout
       - upload-codecov
