@@ -17,6 +17,15 @@ jobs:
       - checkout
       - run: mvn -version
       - run: mvn test
+
+  upload-codecov:
+    docker:
+      - image: cimg/openjdk:21.0.2
+    steps:
+      - checkout
+      - run: mvn test
+      - store_artifacts:
+          path: target
       - codecov/upload
 
 workflows:
@@ -31,3 +40,4 @@ workflows:
             branches:
               only:
                 - master
+      - upload-codecov
