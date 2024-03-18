@@ -7,6 +7,7 @@ import org.mockito.MockitoAnnotations;
 import org.mockito.Mock;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.Mockito.when;
 
 public class IPokemonFactoryTest {
@@ -49,5 +50,6 @@ public class IPokemonFactoryTest {
         assertEquals(expected.getHp(), actual.getHp());
         assertEquals(expected.getDust(), actual.getDust());
         assertEquals(expected.getCandy(), actual.getCandy());
+        assertNotNull(actual.getIv());
     }
 }
