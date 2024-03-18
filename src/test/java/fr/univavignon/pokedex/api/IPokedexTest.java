@@ -72,12 +72,7 @@ public class IPokedexTest {
         when(pokedex.getPokemons()).thenReturn(expectedList);
         assertEquals(expectedList, pokedex.getPokemons());
 
-        Comparator<Pokemon> comp = new Comparator<Pokemon>() {
-            @Override
-            public int compare(Pokemon o1, Pokemon o2) {
-                return o1.getAttack() - o2.getAttack();
-            }
-        };
+        PokemonComparators comp = PokemonComparators.NAME;
 
         expectedList = List.of(new Pokemon[]{aquali, bulbizarre});
         when(pokedex.getPokemons(comp)).thenReturn(expectedList);
