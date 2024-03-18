@@ -17,7 +17,6 @@ jobs:
       - checkout
       - run: mvn -version
       - run: mvn test
-      - codecov/upload
 
 workflows:
   version: 2
@@ -31,3 +30,7 @@ workflows:
             branches:
               only:
                 - master
+  upload-to-codecov:
+    jobs:
+      - checkout
+      - codecov/upload
