@@ -15,12 +15,11 @@ import static org.mockito.Mockito.when;
 
 public class IPokedexTest {
 
-    @Mock
-    IPokedex pokedex;
+    private Pokedex pokedex;
 
     @Before
     public void before() {
-        MockitoAnnotations.initMocks(this);
+        pokedex = new Pokedex(new PokemonMetadataProvider(), new PokemonFactory());
     }
     @Test
     public void testPokedex() throws PokedexException {
@@ -54,33 +53,26 @@ public class IPokedexTest {
                 4,
                 56
         );
+
         expected = 0;
 
-        when(pokedex.addPokemon(bulbizarre)).thenReturn(expected);
         assertEquals(expected, pokedex.addPokemon(bulbizarre));
-
-        when(pokedex.getPokemon(0)).thenReturn(bulbizarre);
         assertEquals(bulbizarre, pokedex.getPokemon(0));
 
         expected = 1;
-        when(pokedex.addPokemon(aquali)).thenReturn(expected);
-        assertEquals(expected, pokedex.addPokemon(aquali));
 
-        when(pokedex.getPokemon(1)).thenReturn(aquali);
+        assertEquals(expected, pokedex.addPokemon(aquali));
         assertEquals(aquali, pokedex.getPokemon(1));
 
         List<Pokemon> expectedList = List.of(new Pokemon[]{bulbizarre, aquali});
-        when(pokedex.getPokemons()).thenReturn(expectedList);
+
         assertEquals(expectedList, pokedex.getPokemons());
 
-        PokemonComparators comp = PokemonComparators.NAME;
-
-        int compResult = comp.compare(bulbizarre, aquali);
-
-        assertTrue(compResult > 0);
+        Comparator<Pokemon> comp = Comparator.comparing(Pokemon::getAttack);
+        comp = comp.reversed();
 
         expectedList = List.of(new Pokemon[]{aquali, bulbizarre});
-        when(pokedex.getPokemons(comp)).thenReturn(expectedList);
+
         assertEquals(expectedList, pokedex.getPokemons(comp));
     }
 

@@ -13,16 +13,20 @@ import static org.mockito.Mockito.when;
 
 public class IPokemonTrainerFactoryTest {
 
-    @Mock
-    private IPokedex pokedex;
-    @Mock
-    private IPokedexFactory pokedexFactory;
-    @Mock
-    private IPokemonTrainerFactory factory;
+    private Pokedex pokedex;
+
+    private PokedexFactory pokedexFactory;
+
+    private PokemonTrainerFactory factory;
 
     @Before
     public void before() {
-        MockitoAnnotations.initMocks(this);
+        PokemonMetadataProvider metadataProvider = new PokemonMetadataProvider();
+        PokemonFactory pokemonFactory = new PokemonFactory();
+
+        pokedexFactory = new PokedexFactory();
+        factory = new PokemonTrainerFactory();
+        pokedex = new Pokedex(metadataProvider, pokemonFactory);
     }
     @Test
     public void testTrainerCreation() {
@@ -33,8 +37,8 @@ public class IPokemonTrainerFactoryTest {
                 pokedex
         );
 
-        when(factory.createTrainer("John", INSTINCT, pokedexFactory)).thenReturn(expected);
         PokemonTrainer actual = factory.createTrainer("John", INSTINCT, pokedexFactory);
+
         assertEquals(expected.getName(), actual.getName());
         assertEquals(expected.getTeam(), actual.getTeam());
         assertNotNull(actual.getPokedex());

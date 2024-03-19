@@ -15,27 +15,23 @@ import static org.mockito.Mockito.when;
 
 public class IPokedexFactoryTest {
 
-    @Mock
-    private IPokedexFactory factory;
-
-    @Mock
     private IPokemonMetadataProvider metadataProvider;
 
-    @Mock
-    private IPokemonFactory pokemonFactory;
-
-    @Mock
-    private IPokedex pokedex;
+    private PokemonFactory pokemonFactory;
 
     @Before
     public void before() {
-        MockitoAnnotations.initMocks(this);
+        metadataProvider = new PokemonMetadataProvider();
+        pokemonFactory = new PokemonFactory();
     }
+
     @Test
     public void testPokedexCreation() {
 
-        when(factory.createPokedex(metadataProvider, pokemonFactory)).thenReturn(pokedex);
-        IPokedex actual = factory.createPokedex(metadataProvider, pokemonFactory);
-        assertEquals(pokedex, actual);
+        PokedexFactory factory = new PokedexFactory();
+
+        Pokedex actual = (Pokedex) factory.createPokedex(metadataProvider, pokemonFactory);
+
+        assertNotNull(actual);
     }
 }

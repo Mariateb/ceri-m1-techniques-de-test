@@ -12,12 +12,11 @@ import static org.mockito.Mockito.when;
 
 public class IPokemonFactoryTest {
 
-    @Mock
-    IPokemonFactory factory;
+    PokemonFactory factory;
 
     @Before
     public void before() {
-        MockitoAnnotations.initMocks(this);
+        factory = new PokemonFactory();
     }
 
     @Test
@@ -39,7 +38,6 @@ public class IPokemonFactoryTest {
                 100
         );
 
-        when(factory.createPokemon(133, 2729, 202, 5000, 4)).thenReturn(expected);
         Pokemon actual = factory.createPokemon(133, 2729, 202, 5000, 4);
         assertEquals(expected.getIndex(), actual.getIndex());
         assertEquals(expected.getName(), actual.getName());

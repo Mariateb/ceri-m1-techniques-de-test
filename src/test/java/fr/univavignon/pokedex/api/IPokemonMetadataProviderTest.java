@@ -11,12 +11,11 @@ import org.mockito.MockitoAnnotations;
 
 public class IPokemonMetadataProviderTest {
 
-    @Mock
-    IPokemonMetadataProvider provider;
+    PokemonMetadataProvider provider;
 
     @Before
     public void before() {
-        MockitoAnnotations.initMocks(this);
+        provider = new PokemonMetadataProvider();
     }
     @Test
     public void testProvide() throws PokedexException {
@@ -30,8 +29,12 @@ public class IPokemonMetadataProviderTest {
                 168,
                 260
         );
-        
-        when(provider.getPokemonMetadata(aqualiIndex)).thenReturn(expected);
-        assertEquals(expected, provider.getPokemonMetadata(aqualiIndex));
+        PokemonMetadata actual = provider.getPokemonMetadata(aqualiIndex);
+
+        assertEquals(expected.getIndex(), actual.getIndex());
+        assertEquals(expected.getName(), actual.getName());
+        assertEquals(expected.getAttack(), actual.getAttack());
+        assertEquals(expected.getDefense(), actual.getDefense());
+        assertEquals(expected.getStamina(), actual.getStamina());
     }
 }
