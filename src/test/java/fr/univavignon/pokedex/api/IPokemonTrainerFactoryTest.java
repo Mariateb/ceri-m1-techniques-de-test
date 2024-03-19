@@ -28,6 +28,7 @@ public class IPokemonTrainerFactoryTest {
         factory = new PokemonTrainerFactory();
         pokedex = new Pokedex(metadataProvider, pokemonFactory);
     }
+
     @Test
     public void testTrainerCreation() {
 
