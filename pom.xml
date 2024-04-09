@@ -39,7 +39,6 @@
                     <configLocation>checkstyle.xml</configLocation>
                     <propertiesLocation>checkstyle_packages.xml</propertiesLocation>
                 </configuration>
-
                 <dependencies>
                     <dependency>
                         <groupId>com.puppycrawl.tools</groupId>
