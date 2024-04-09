@@ -18,6 +18,7 @@ jobs:
       - run: mvn -version
       - run: mvn test
       - run: mvn site
+      - run: mvn checkstyle:checkstyle
       - store_artifacts:
           path: target
 
@@ -28,6 +29,7 @@ jobs:
     steps:
       - checkout
       - run: mvn test
+      - run: mvn checkstyle:checkstyle
       - store_artifacts:
           path: target
       - codecov/upload
