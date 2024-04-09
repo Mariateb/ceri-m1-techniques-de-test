@@ -19,7 +19,7 @@ jobs:
       - run: mvn test
       - run: mvn site
       - store_artifacts:
-        path: target
+          path: target
 
   upload-codecov:
     docker:
