@@ -7,9 +7,11 @@ import java.util.List;
 public class Pokedex implements IPokedex {
 
     private int size;
+
     private List<Pokemon> pokemonList;
 
     private IPokemonMetadataProvider metadataProvider;
+
     private IPokemonFactory pokemonFactory;
 
     public Pokedex(IPokemonMetadataProvider metadataProvider, IPokemonFactory pokemonFactory) {
@@ -33,7 +35,7 @@ public class Pokedex implements IPokedex {
 
     @Override
     public Pokemon getPokemon(int id) throws PokedexException {
-        if(id >= this.size || id < 0)  {
+        if (id >= this.size || id < 0)  {
             throw new PokedexException("Index invalide");
         }
 

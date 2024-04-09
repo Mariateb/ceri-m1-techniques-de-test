@@ -4,9 +4,6 @@
 <module name="Checker">
     <property name="charset" value="UTF-8"/>
     <property name="severity" value="warning"/>
-    <module name="LineLength">
-        <property name="max" value="120"/>
-    </module>
     <module name="TreeWalker">
         <module name="AvoidStarImport"/>
         <module name="NeedBraces"/>

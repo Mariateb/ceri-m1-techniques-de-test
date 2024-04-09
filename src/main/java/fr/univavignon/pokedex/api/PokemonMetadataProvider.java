@@ -15,7 +15,7 @@ public class PokemonMetadataProvider implements IPokemonMetadataProvider {
 
     @Override
     public PokemonMetadata getPokemonMetadata(int index) throws PokedexException {
-        if(!dataBank.containsKey(index)) {
+        if (!dataBank.containsKey(index)) {
             throw new PokedexException("Index invalide.");
         }
         return dataBank.get(index);
