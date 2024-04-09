@@ -17,7 +17,6 @@ jobs:
       - checkout
       - run: mvn -version
       - run: mvn test
-      - run: mvn site
       - run: mvn checkstyle:checkstyle
       - store_artifacts:
           path: target
