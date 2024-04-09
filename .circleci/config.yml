@@ -20,6 +20,11 @@ jobs:
       - run: mvn checkstyle:checkstyle
       - run: mvn post-site
       - run: mvn badger:badges
+      - run: git config user.email "sabmou05@gmail.com"
+      - run: git config user.name "Mariateb"
+      - run: git add target/site/badges/*
+      - run: git commit -m "[circleci] ajout badge"
+      - run: git push
       - store_artifacts:
           path: target
 
