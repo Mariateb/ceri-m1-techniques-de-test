@@ -18,6 +18,8 @@ jobs:
       - run: mvn -version
       - run: mvn test
       - run: mvn checkstyle:checkstyle
+      - run: mvn post-site
+      - run: mvn badger:badges
       - store_artifacts:
           path: target
 
@@ -29,6 +31,8 @@ jobs:
       - checkout
       - run: mvn test
       - run: mvn checkstyle:checkstyle
+      - run: mvn post-site
+      - run: mvn badger:badges
       - store_artifacts:
           path: target
       - codecov/upload
